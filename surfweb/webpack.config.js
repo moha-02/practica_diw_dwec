@@ -5,6 +5,7 @@ const autoprefixer = require("autoprefixer");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
+
 module.exports = {
   mode: "development",
   entry: "./src/js/main.js",
@@ -19,8 +20,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({ template: "./src/index.html" }),
+    new HtmlWebpackPlugin({ template: "./src/web/store.html", filename: `web/store.html`}),
+    new HtmlWebpackPlugin({ template: "./src/web/weather.html",filename: `web/weather.html`,}),
     new CopyPlugin({
-      patterns: [{ from: "./src/assets", to: "assets" }],
+      patterns: [{ from: "./src/assets", to: "assets"}],
     }),
   ],
   module: {
