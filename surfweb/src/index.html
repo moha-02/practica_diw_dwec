@@ -204,10 +204,11 @@
             class="modal fade"
             id="modalRegister"
             tabindex="-1"
+            role="dialog"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div
                   class="modal-header"
@@ -217,26 +218,30 @@
                     Register
                   </h1>
                   <button
-                    type="button"
+                    type="submit"
                     class="btn-close"
                     data-bs-dismiss="modal"
                     aria-label="Close"
                   ></button>
                 </div>
                 <div class="modal-body">
-                  <form class="needs-validation">
+                  <form action="" class="needs-validation" novalidate autocomplete="off" >
                     <!-- Username input -->
                     <div class="form-outline mb-4">
-                      <input
+                      <div class="input-group has-validation">
+                        <input
                         type="text"
                         id="registerUsername"
                         class="form-control"
                         placeholder="Username"
+                        value=""
                         required
-                      />
-                      <div class="valid-tooltip">
-                        Looks good!
+                        />
+                        <div class="invalid-feedback">
+                          Por favor introduzca un username
+                        </div>
                       </div>
+
                     </div>
                     <!-- Email input -->
                     <div class="form-outline mb-4">
@@ -247,8 +252,8 @@
                         placeholder="Email Address"
                         required
                       />
-                      <div class="valid-tooltip">
-                        Looks good!
+                      <div class="invalid-feedback">
+                        Por favor introduzca un correo electronico
                       </div>
                     </div>
 
@@ -261,8 +266,8 @@
                         placeholder="Create Password"
                         required
                       />
-                      <div class="valid-tooltip">
-                        Looks good!
+                      <div class="invalid-feedback">
+                        Introduzca una contraseña.
                       </div>
                     </div>
                     <!-- Password input confirm -->
@@ -274,14 +279,16 @@
                         placeholder="Confirm Password"
                         required
                       />
+                      <div class="invalid-feedback">
+                        La contraseña tiene que ser las misma
+                      </div>
                     </div>
 
                     <div class="modal-footer">
                       <button
-                        type="button"
-                        onclick="create()"
+                        type="submit"
+                        id="buttonSignup"
                         class="btn btn-primary btn-block mb-4"
-                        data-bs-dismiss="modal"
                       >
                         Sign Up
                       </button>
