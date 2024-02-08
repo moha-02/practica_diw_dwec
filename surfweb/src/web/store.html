@@ -24,7 +24,7 @@
           <div class="d-flex justify-content-between">
             <!-- Brand -->
             <img
-              src="../assets/logo2.png"
+              src="assets/logo2.png"
               height="50"
               loading="lazy"
               style="margin-top: -1px"
@@ -396,13 +396,15 @@
                 <div class="d-flex align-items-center">
                   <ul class="navbar-nav ml-auto nav-flex-icons">
                     <li class="nav-item">
-                      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
-                        <span class="input-group-text border-0 d-none d-lg-flex">
+                      
+                      <a class="nav-link" href="#">
+                        <span class="badge badge-pill bg-danger" id="contadorArticulos" hidden="true"></span>
+                        <span>
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
                             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
                           </svg>
                         </span>
-                      </button>
+                      </a>
                     </li>
                     <li class="nav-item dropdown">
                       
@@ -460,22 +462,22 @@
       <strong class="text-dark mr-2"> Categorias: </strong>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Todos</a>
+          <a class="nav-link active" id="btnTodos" aria-current="page" href="#">Todos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="btnTablas" href="#">Tablas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Neoprenos</a>
+          <a class="nav-link" id="btnNeoprenos" href="#">Neoprenos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Bodyboards</a>
+          <a class="nav-link" id="btnBodyboards" href="#">Bodyboards</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Accesorios</a>
+          <a class="nav-link" id="btnAccesorios" href="#">Accesorios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Lifestyle</a>
+          <a class="nav-link" id="btnLifestyle" href="#">Lifestyle</a>
         </li>
       </ul>
       <form class="d-flex input-group w-auto">
@@ -510,7 +512,7 @@
             <div class="card-body border border-info">
               <h5 class="card-title">Bodyboard Paipo Naranaja</h5>
               <p class="card-text">50$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -523,7 +525,7 @@
               <div class="card-body border border-info">
                 <h5 class="card-title">Tabla de Surf Saona</h5>
                 <p class="card-text">455.90$</p>
-                <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+                <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
               </div>
             </div>
           </div>
@@ -534,9 +536,9 @@
               <img src="../assets/store/life1.webp"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Sudadera Grow it Local</h5>
+              <h5 class="card-title" id="nombreArticulo" >Sudadera Grow it Local</h5>
               <p class="card-text">90$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -547,9 +549,9 @@
                 <img src="../assets/store/neo1.jpg"class="card-img-top" height="300"/>
               </div>
               <div class="card-body border border-info">
-                <h5 class="card-title">Neopreno Kynay</h5>
+                <h5 class="card-title" id="nombreArticulo" >Neopreno Kynay</h5>
                 <p class="card-text">150$</p>
-                <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+                <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
               </div>
             </div>
         </div>
@@ -560,9 +562,9 @@
                 <img src="../assets/store/tabla1.jpg"class="card-img-top" height="300"/>
               </div>
               <div class="card-body border border-info">
-                <h5 class="card-title">Tabla de Surf Full&Cas</h5>
+                <h5 class="card-title" id="nombreArticulo" >Tabla de Surf Full&Cas</h5>
                 <p class="card-text">299$</p>
-                <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+                <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
               </div>
             </div>
         </div>
@@ -573,9 +575,9 @@
               <img src="../assets/store/bodyboard2.jpg"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Bodyboard Paipo Amarillo </h5>
+              <h5 class="card-title"id="nombreArticulo" >Bodyboard Paipo Amarillo </h5>
               <p class="card-text">50$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -586,9 +588,9 @@
               <img src="../assets/store/tabla3.jpg"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Tabla de Surf Olaian</h5>
+              <h5 class="card-title" id="nombreArticulo" >Tabla de Surf Olaian</h5>
               <p class="card-text">350,99$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -599,9 +601,9 @@
               <img src="../assets/store/accesorio2.jpg"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Leash FCS</h5>
+              <h5 class="card-title" id="nombreArticulo" >Leash FCS</h5>
               <p class="card-text">39$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -611,9 +613,9 @@
               <img src="../assets/store/bodyboard3.jpg"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Bodyboard Osprey 40</h5>
+              <h5 class="card-title" id="nombreArticulo" >Bodyboard Osprey 40</h5>
               <p class="card-text">75$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -624,9 +626,9 @@
               <img src="../assets/store/accesorio1.avif"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Leashe Olaian </h5>
+              <h5 class="card-title" id="nombreArticulo" >Leashe Olaian </h5>
               <p class="card-text">30$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -637,9 +639,9 @@
               <img src="../assets/store/life3.webp"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Camiseta Palmera Surf</h5>
+              <h5 class="card-title" id="nombreArticulo" >Camiseta Palmera Surf</h5>
               <p class="card-text">80$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -650,9 +652,9 @@
               <img src="../assets/store/tabla4.jpg"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Tabla de Surf Feel Surf</h5>
+              <h5 class="card-title" id="nombreArticulo" >Tabla de Surf Feel Surf</h5>
               <p class="card-text">600$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -663,9 +665,9 @@
               <img src="../assets/store/accesorio3.webp"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Pads Surf Sunset</h5>
+              <h5 class="card-title" id="nombreArticulo" >Pads Surf Sunset</h5>
               <p class="card-text">40$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -676,9 +678,9 @@
               <img src="../assets/store/life4.webp"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Camiseta Yes to Surf</h5>
+              <h5 class="card-title" id="nombreArticulo" >Camiseta Yes to Surf</h5>
               <p class="card-text">58$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -689,9 +691,9 @@
               <img src="../assets/store/accesorio4.webp"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Pad Surf Waikiki</h5>
+              <h5 class="card-title" id="nombreArticulo" >Pad Surf Waikiki</h5>
               <p class="card-text">39,99$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -702,9 +704,9 @@
               <img src="../assets/store/neo2.jpg"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Neopreno Selano</h5>
+              <h5 class="card-title" id="nombreArticulo" >Neopreno Selano</h5>
               <p class="card-text">200$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -715,9 +717,9 @@
               <img src="../assets/store/life2.webp"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Vamos Pal Agua Camiseta Surf Mujer Sostenible</h5>
+              <h5 class="card-title" id="nombreArticulo" >Vamos Pal Agua Camiseta Surf Mujer Sostenible</h5>
               <p class="card-text">33$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -728,9 +730,9 @@
               <img src="../assets/store/tabla5.jpg"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Tabla de Surf Tools Surfboards</h5>
+              <h5 class="card-title" id="nombreArticulo" >Tabla de Surf Tools Surfboards</h5>
               <p class="card-text">230$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -741,9 +743,9 @@
               <img src="../assets/store/accesorio5.jpg"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Funda tabla Radz</h5>
+              <h5 class="card-title" id="nombreArticulo" >Funda tabla Radz</h5>
               <p class="card-text">90$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -754,9 +756,9 @@
               <img src="../assets/store/neo3.jpg"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Neopreno Selano</h5>
+              <h5 class="card-title"id="nombreArticulo" >Neopreno Selano</h5>
               <p class="card-text">110$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -766,9 +768,9 @@
               <img src="../assets/store/accesorio6.jpg"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Funda Surf Creatures of Leisure</h5>
+              <h5 class="card-title" id="nombreArticulo" >Funda Surf Creatures of Leisure</h5>
               <p class="card-text">50$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -778,9 +780,9 @@
               <img src="../assets/store/neo4.jpg"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Neopreno Mujer </h5>
+              <h5 class="card-title" id="nombreArticulo" >Neopreno Mujer </h5>
               <p class="card-text">109$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
@@ -790,9 +792,9 @@
               <img src="../assets/store/accesorio7.jpg"class="card-img-top" height="300"/>
             </div>
             <div class="card-body border border-info">
-              <h5 class="card-title">Quilla Surf Feather</h5>
+              <h5 class="card-title" id="nombreArticulo" >Quilla Surf Feather</h5>
               <p class="card-text">70$</p>
-              <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Comparar</a>
+              <a href="#!" class="btn btn-primary btnPushCarro" data-mdb-ripple-init>Añadir al carro</a>
             </div>
           </div>
         </div>
