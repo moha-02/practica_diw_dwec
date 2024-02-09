@@ -1,7 +1,24 @@
 const divTienda = document.querySelector("#divTienda");
 
+//Activación botones filtros
+
+const btnTodos = document.querySelector("#btnTodos");
+btnTodos.addEventListener("click", getAllArticulos);
+
 const btnTabla = document.querySelector("#btnTablas");
 btnTabla.addEventListener("click", getTablas);
+
+const btnNeoprenos = document.querySelector("#btnNeoprenos");
+btnNeoprenos.addEventListener("click", getNeoprenos);
+
+const btnBodyboards = document.querySelector("#btnBodyboards");
+btnBodyboards.addEventListener("click", getBodyboards);
+
+const btnAccesorios = document.querySelector("#btnAccesorios");
+btnAccesorios.addEventListener("click", getAccesorios);
+
+const btnLifestyle = document.querySelector("#btnLifestyle");
+btnLifestyle.addEventListener("click", getLifetyle);
 
 //Productos
 const articulos = [
@@ -146,7 +163,7 @@ const articulos = [
 ];
 
 //Creo base de datos y voy metiendo los productos en el
-let request = indexedDB.open("Articulos", 2);
+let request = indexedDB.open("Articulos", 4);
 
 request.onupgradeneeded = (event) => {
   const db = event.target.result;
@@ -165,8 +182,61 @@ request.onupgradeneeded = (event) => {
   };
 };
 
-/////////// ESquema de las cartas /////////////////
+/////////// Filtros /////////////////
 
+//Todos
+function getAllArticulos() {
+  divTienda.innerHTML = "";
+  const transaction = request.result.transaction(["Tienda"], "readwrite");
+  const tipoArticulos = transaction.objectStore("Tienda").index("tipo");
+  tipoArticulos.getAll().onsuccess = function (ev) {
+    const tablas = ev.target.result;
+    for (let i in tablas) {
+      console.log(tablas);
+
+      // Crear los elementos
+      let colDiv = document.createElement("div");
+      let cardDiv = document.createElement("div");
+      let bgImageDiv = document.createElement("div");
+      let img = document.createElement("img");
+      let cardBodyDiv = document.createElement("div");
+      let h5 = document.createElement("h5");
+      let p = document.createElement("p");
+      let a = document.createElement("a");
+      // Añadir las clases y otros atributos
+      colDiv.setAttribute("class", "col");
+      cardDiv.setAttribute("class", "card h-60 mt-3");
+      bgImageDiv.setAttribute("class", "bg-image hover-overlay");
+      bgImageDiv.setAttribute("data-mdb-ripple-init", "");
+      bgImageDiv.setAttribute("data-mdb-ripple-color", "light");
+      img.setAttribute("src", "../assets/store/" + tablas[i].img);
+      img.setAttribute("class", "card-img-top");
+      img.setAttribute("height", "300");
+      cardBodyDiv.setAttribute("class", "card-body border border-info");
+      h5.setAttribute("class", "card-title");
+      a.setAttribute("href", "#!");
+      a.setAttribute("class", "btn btn-primary btnPushCarro");
+      a.setAttribute("data-mdb-ripple-init", "");
+
+      h5.textContent = tablas[i].nombre;
+      p.textContent = tablas[i].precio;
+      a.textContent = "Añadir al carro";
+
+      //Añadimos los elementos
+      bgImageDiv.appendChild(img);
+      cardBodyDiv.appendChild(h5);
+      cardBodyDiv.appendChild(p);
+      cardBodyDiv.appendChild(a);
+      cardDiv.appendChild(bgImageDiv);
+      cardDiv.appendChild(cardBodyDiv);
+      colDiv.appendChild(cardDiv);
+
+      divTienda.appendChild(colDiv);
+    }
+  };
+}
+
+//Tablas
 function getTablas() {
   divTienda.innerHTML = "";
   const transaction = request.result.transaction(["Tienda"], "readwrite");
@@ -196,13 +266,14 @@ function getTablas() {
       img.setAttribute("class", "card-img-top");
       img.setAttribute("height", "300");
       cardBodyDiv.setAttribute("class", "card-body border border-info");
+      h5.setAttribute("class", "card-title");
       a.setAttribute("href", "#!");
-      a.setAttribute("class", "btn btn-primary");
+      a.setAttribute("class", "btn btn-primary btnPushCarro");
       a.setAttribute("data-mdb-ripple-init", "");
 
       h5.textContent = tablas[i].nombre;
       p.textContent = tablas[i].precio;
-      a.textContent = "Comparar";
+      a.textContent = "Añadir al carro";
 
       //Añadimos los elementos
       bgImageDiv.appendChild(img);
@@ -216,4 +287,267 @@ function getTablas() {
       divTienda.appendChild(colDiv);
     }
   };
+}
+
+//Neoprenos
+
+function getNeoprenos() {
+  divTienda.innerHTML = "";
+  const transaction = request.result.transaction(["Tienda"], "readwrite");
+  const tipoArticulos = transaction.objectStore("Tienda").index("tipo");
+  console.log(tipoArticulos);
+  tipoArticulos.getAll("neopreno").onsuccess = function (ev) {
+    const tablas = ev.target.result;
+    for (let i in tablas) {
+      console.log(tablas);
+
+      // Crear los elementos
+      let colDiv = document.createElement("div");
+      let cardDiv = document.createElement("div");
+      let bgImageDiv = document.createElement("div");
+      let img = document.createElement("img");
+      let cardBodyDiv = document.createElement("div");
+      let h5 = document.createElement("h5");
+      let p = document.createElement("p");
+      let a = document.createElement("a");
+      // Añadir las clases y otros atributos
+      colDiv.setAttribute("class", "col");
+      cardDiv.setAttribute("class", "card h-60 mt-3");
+      bgImageDiv.setAttribute("class", "bg-image hover-overlay");
+      bgImageDiv.setAttribute("data-mdb-ripple-init", "");
+      bgImageDiv.setAttribute("data-mdb-ripple-color", "light");
+      img.setAttribute("src", "../assets/store/" + tablas[i].img);
+      img.setAttribute("class", "card-img-top");
+      img.setAttribute("height", "300");
+      cardBodyDiv.setAttribute("class", "card-body border border-info");
+      h5.setAttribute("class", "card-title");
+      a.setAttribute("href", "#!");
+      a.setAttribute("class", "btn btn-primary btnPushCarro");
+      a.setAttribute("data-mdb-ripple-init", "");
+
+      h5.textContent = tablas[i].nombre;
+      p.textContent = tablas[i].precio;
+      a.textContent = "Añadir al carro";
+
+      //Añadimos los elementos
+      bgImageDiv.appendChild(img);
+      cardBodyDiv.appendChild(h5);
+      cardBodyDiv.appendChild(p);
+      cardBodyDiv.appendChild(a);
+      cardDiv.appendChild(bgImageDiv);
+      cardDiv.appendChild(cardBodyDiv);
+      colDiv.appendChild(cardDiv);
+
+      divTienda.appendChild(colDiv);
+    }
+  };
+}
+
+//Bodyboards
+
+function getBodyboards() {
+  divTienda.innerHTML = "";
+  const transaction = request.result.transaction(["Tienda"], "readwrite");
+  const tipoArticulos = transaction.objectStore("Tienda").index("tipo");
+  console.log(tipoArticulos);
+  tipoArticulos.getAll("bodyboard").onsuccess = function (ev) {
+    const tablas = ev.target.result;
+    for (let i in tablas) {
+      console.log(tablas);
+
+      // Crear los elementos
+      let colDiv = document.createElement("div");
+      let cardDiv = document.createElement("div");
+      let bgImageDiv = document.createElement("div");
+      let img = document.createElement("img");
+      let cardBodyDiv = document.createElement("div");
+      let h5 = document.createElement("h5");
+      let p = document.createElement("p");
+      let a = document.createElement("a");
+      // Añadir las clases y otros atributos
+      colDiv.setAttribute("class", "col");
+      cardDiv.setAttribute("class", "card h-60 mt-3");
+      bgImageDiv.setAttribute("class", "bg-image hover-overlay");
+      bgImageDiv.setAttribute("data-mdb-ripple-init", "");
+      bgImageDiv.setAttribute("data-mdb-ripple-color", "light");
+      img.setAttribute("src", "../assets/store/" + tablas[i].img);
+      img.setAttribute("class", "card-img-top");
+      img.setAttribute("height", "300");
+      cardBodyDiv.setAttribute("class", "card-body border border-info");
+      h5.setAttribute("class", "card-title");
+      a.setAttribute("href", "#!");
+      a.setAttribute("class", "btn btn-primary btnPushCarro");
+      a.setAttribute("data-mdb-ripple-init", "");
+
+      h5.textContent = tablas[i].nombre;
+      p.textContent = tablas[i].precio;
+      a.textContent = "Añadir al carro";
+
+      //Añadimos los elementos
+      bgImageDiv.appendChild(img);
+      cardBodyDiv.appendChild(h5);
+      cardBodyDiv.appendChild(p);
+      cardBodyDiv.appendChild(a);
+      cardDiv.appendChild(bgImageDiv);
+      cardDiv.appendChild(cardBodyDiv);
+      colDiv.appendChild(cardDiv);
+
+      divTienda.appendChild(colDiv);
+    }
+  };
+}
+
+//Accesorios
+
+function getAccesorios() {
+  divTienda.innerHTML = "";
+  const transaction = request.result.transaction(["Tienda"], "readwrite");
+  const tipoArticulos = transaction.objectStore("Tienda").index("tipo");
+  console.log(tipoArticulos);
+  tipoArticulos.getAll("accesorio").onsuccess = function (ev) {
+    const tablas = ev.target.result;
+    for (let i in tablas) {
+      console.log(tablas);
+
+      // Crear los elementos
+      let colDiv = document.createElement("div");
+      let cardDiv = document.createElement("div");
+      let bgImageDiv = document.createElement("div");
+      let img = document.createElement("img");
+      let cardBodyDiv = document.createElement("div");
+      let h5 = document.createElement("h5");
+      let p = document.createElement("p");
+      let a = document.createElement("a");
+      // Añadir las clases y otros atributos
+      colDiv.setAttribute("class", "col");
+      cardDiv.setAttribute("class", "card h-60 mt-3");
+      bgImageDiv.setAttribute("class", "bg-image hover-overlay");
+      bgImageDiv.setAttribute("data-mdb-ripple-init", "");
+      bgImageDiv.setAttribute("data-mdb-ripple-color", "light");
+      img.setAttribute("src", "../assets/store/" + tablas[i].img);
+      img.setAttribute("class", "card-img-top");
+      img.setAttribute("height", "300");
+      cardBodyDiv.setAttribute("class", "card-body border border-info");
+      h5.setAttribute("class", "card-title");
+      a.setAttribute("href", "#!");
+      a.setAttribute("class", "btn btn-primary btnPushCarro");
+      a.setAttribute("data-mdb-ripple-init", "");
+
+      h5.textContent = tablas[i].nombre;
+      p.textContent = tablas[i].precio;
+      a.textContent = "Añadir al carro";
+
+      //Añadimos los elementos
+      bgImageDiv.appendChild(img);
+      cardBodyDiv.appendChild(h5);
+      cardBodyDiv.appendChild(p);
+      cardBodyDiv.appendChild(a);
+      cardDiv.appendChild(bgImageDiv);
+      cardDiv.appendChild(cardBodyDiv);
+      colDiv.appendChild(cardDiv);
+
+      divTienda.appendChild(colDiv);
+    }
+  };
+}
+
+function getLifetyle() {
+  divTienda.innerHTML = "";
+  const transaction = request.result.transaction(["Tienda"], "readwrite");
+  const tipoArticulos = transaction.objectStore("Tienda").index("tipo");
+  console.log(tipoArticulos);
+  tipoArticulos.getAll("life").onsuccess = function (ev) {
+    const tablas = ev.target.result;
+    for (let i in tablas) {
+      console.log(tablas);
+
+      // Crear los elementos
+      let colDiv = document.createElement("div");
+      let cardDiv = document.createElement("div");
+      let bgImageDiv = document.createElement("div");
+      let img = document.createElement("img");
+      let cardBodyDiv = document.createElement("div");
+      let h5 = document.createElement("h5");
+      let p = document.createElement("p");
+      let a = document.createElement("a");
+      // Añadir las clases y otros atributos
+      colDiv.setAttribute("class", "col");
+      cardDiv.setAttribute("class", "card h-60 mt-3");
+      bgImageDiv.setAttribute("class", "bg-image hover-overlay");
+      bgImageDiv.setAttribute("data-mdb-ripple-init", "");
+      bgImageDiv.setAttribute("data-mdb-ripple-color", "light");
+      img.setAttribute("src", "../assets/store/" + tablas[i].img);
+      img.setAttribute("class", "card-img-top");
+      img.setAttribute("height", "300");
+      cardBodyDiv.setAttribute("class", "card-body border border-info");
+      h5.setAttribute("class", "card-title");
+      a.setAttribute("href", "#!");
+      a.setAttribute("class", "btn btn-primary btnPushCarro");
+      a.setAttribute("data-mdb-ripple-init", "");
+
+      h5.textContent = tablas[i].nombre;
+      p.textContent = tablas[i].precio;
+      a.textContent = "Añadir al carro";
+
+      //Añadimos los elementos
+      bgImageDiv.appendChild(img);
+      cardBodyDiv.appendChild(h5);
+      cardBodyDiv.appendChild(p);
+      cardBodyDiv.appendChild(a);
+      cardDiv.appendChild(bgImageDiv);
+      cardDiv.appendChild(cardBodyDiv);
+      colDiv.appendChild(cardDiv);
+
+      divTienda.appendChild(colDiv);
+    }
+  };
+}
+
+// Añadir articulo al carro
+const btnComprar = document.querySelectorAll(".btnPushCarro");
+btnComprar.forEach((btn) => {
+  btn.addEventListener("click", anadirCarro);
+});
+
+// Añadir al carro
+function anadirCarro(event) {
+  const logued = localStorage.getItem("User");
+  // Acceso al botón clicado
+  const btn = event.target;
+  // Accedo al elemento card que contiene el botón clicado
+  const card = btn.parentElement;
+
+  // Accedo al título dentro del card
+  const nombreArticulo = card.querySelector("h5");
+  // Obtengo el título
+  const textArticulo = nombreArticulo.textContent;
+
+  var carro = JSON.parse(localStorage.getItem("Carro" + logued)) || [];
+
+  // Llamada a la función getArticulo que ahora devuelve una promesa
+  getArticulo(textArticulo).then((articulo) => {
+    carro.push(articulo);
+    //Añado el articulo en el localstorage.Me aseguro que es el caro del usuario
+    localStorage.setItem("Carro" + logued, JSON.stringify(carro));
+  });
+}
+
+// Obtener el artículo del IndexDB
+function getArticulo(articulo) {
+  return new Promise((resolve, reject) => {
+    const transaction = request.result.transaction(["Tienda"], "readwrite");
+    const tipoArticulos = transaction.objectStore("Tienda").index("tipo");
+
+    tipoArticulos.getAll().onsuccess = function (ev) {
+      const tablas = ev.target.result;
+      for (let i in tablas) {
+        if (tablas[i].nombre === articulo) {
+          resolve(tablas[i]);
+          return;
+        }
+      }
+      // Si no se encuentra el artículo, rechazar la promesa
+      reject(new Error("Artículo no encontrado"));
+    };
+  });
 }
