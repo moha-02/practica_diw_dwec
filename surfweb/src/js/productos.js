@@ -1,12 +1,5 @@
 const divTienda = document.querySelector("#divTienda");
 
-<<<<<<< HEAD
-const btnTabla = document.querySelector("#btnTablas");
-btnTabla.addEventListener("click", getTablas);
-
-=======
-//Activación botones filtros
-
 const btnTodos = document.querySelector("#btnTodos");
 btnTodos.addEventListener("click", getAllArticulos);
 
@@ -24,9 +17,6 @@ btnAccesorios.addEventListener("click", getAccesorios);
 
 const btnLifestyle = document.querySelector("#btnLifestyle");
 btnLifestyle.addEventListener("click", getLifetyle);
-
->>>>>>> origin/mooha
-//Productos
 const articulos = [
   {
     img: "bodyboard1.jpg",
@@ -169,11 +159,7 @@ const articulos = [
 ];
 
 //Creo base de datos y voy metiendo los productos en el
-<<<<<<< HEAD
-let request = indexedDB.open("Articulos", 2);
-=======
 let request = indexedDB.open("Articulos", 4);
->>>>>>> origin/mooha
 
 request.onupgradeneeded = (event) => {
   const db = event.target.result;
@@ -192,13 +178,6 @@ request.onupgradeneeded = (event) => {
   };
 };
 
-<<<<<<< HEAD
-/////////// ESquema de las cartas /////////////////
-
-=======
-/////////// Filtros /////////////////
-
-//Todos
 function getAllArticulos() {
   divTienda.innerHTML = "";
   const transaction = request.result.transaction(["Tienda"], "readwrite");
@@ -251,7 +230,7 @@ function getAllArticulos() {
 }
 
 //Tablas
->>>>>>> origin/mooha
+
 function getTablas() {
   divTienda.innerHTML = "";
   const transaction = request.result.transaction(["Tienda"], "readwrite");
@@ -281,23 +260,14 @@ function getTablas() {
       img.setAttribute("class", "card-img-top");
       img.setAttribute("height", "300");
       cardBodyDiv.setAttribute("class", "card-body border border-info");
-<<<<<<< HEAD
-      a.setAttribute("href", "#!");
-      a.setAttribute("class", "btn btn-primary");
-=======
       h5.setAttribute("class", "card-title");
       a.setAttribute("href", "#!");
       a.setAttribute("class", "btn btn-primary btnPushCarro");
->>>>>>> origin/mooha
       a.setAttribute("data-mdb-ripple-init", "");
 
       h5.textContent = tablas[i].nombre;
       p.textContent = tablas[i].precio;
-<<<<<<< HEAD
-      a.textContent = "Comparar";
-=======
       a.textContent = "Añadir al carro";
->>>>>>> origin/mooha
 
       //Añadimos los elementos
       bgImageDiv.appendChild(img);
@@ -312,8 +282,6 @@ function getTablas() {
     }
   };
 }
-<<<<<<< HEAD
-=======
 
 //Neoprenos
 
@@ -577,4 +545,3 @@ function getArticulo(articulo) {
     };
   });
 }
->>>>>>> origin/mooha

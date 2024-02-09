@@ -107,8 +107,4 @@ function cierreSesion() {
   divLogReg.removeAttribute("hidden");
   divLogued.setAttribute("hidden", "true");
   window.location.href = "../index.html";
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/mooha

@@ -1,4 +1,4 @@
-var map = L.map('map').setView([51.505, -0.09], 13);
+var map = L.map("map").setView([51.505, -0.09], 13);
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 60,
   attribution:
@@ -99,45 +99,44 @@ var beachesData = {
   ],
 };
 
+let marker, circle, zoomed;
 
-let marker,circle,zoomed;
+function success(pos) {
+  const lat = pos.coords.latitude;
+  const lng = pos.coords.longitude;
+  const accuracy = pos.coords.accuracy;
 
-function success(pos){
-  
-    const lat = pos.coords.latitude;
-    const lng = pos.coords.longitude;
-    const accuracy = pos.coords.accuracy;
+  if (marker) {
+    map.removeLayer(marker);
+    map.removeLayer(circle);
+  }
 
-    if(marker){
-        map.removeLayer(marker);
-        map.removeLayer(circle);
-    }
+  marker = L.marker([lat, lng], { icon: myIcon }).addTo(map);
+  circle = L.circle([lat, lng], { radius: accuracy }, { icon: myIcon }).addTo(
+    map
+  );
 
-    marker = L.marker([lat,lng],{icon: myIcon}).addTo(map);
-    circle = L.circle([lat,lng],{radius: accuracy},{icon: myIcon}).addTo(map);
+  if (!zoomed) {
+    zoomed = map.fitBounds(circle.getBounds());
+  }
+  map.setView([lat, lng]);
 
-    if(!zoomed){
-        zoomed = map.fitBounds(circle.getBounds());
-    }
-    map.setView([lat,lng]);
+  marker.bindPopup("Estas aqui");
+  marker.on("mouseover", function (e) {
+    this.openPopup();
+  });
+  marker.on("mouseout", function (e) {
+    this.closePopup();
+  });
 
-    marker.bindPopup("Estas aqui");
-    marker.on('mouseover', function (e) {
-        this.openPopup();
-    });
-    marker.on('mouseout', function (e) {
-        this.closePopup();
-    });
-
-    let beaches = L.geoJSON(beachesData).addTo(map);
-    beaches.on('click',function(e){
-      alert("Clic en "+ e.layer.feature.geometry.coordinates);
-    })
-    
+  let beaches = L.geoJSON(beachesData).addTo(map);
+  beaches.on("click", function (e) {
+    alert("Clic en " + e.layer.feature.geometry.coordinates);
+  });
 }
-function error(err){
-    if(err.code === 1){
-        alert("Permitir acceso a ubucacion")
-    }
-} 
-navigator.geolocation.watchPosition(success,error);
+function error(err) {
+  if (err.code === 1) {
+    alert("Permitir acceso a ubucacion");
+  }
+}
+navigator.geolocation.watchPosition(success, error);
