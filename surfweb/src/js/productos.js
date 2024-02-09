@@ -522,11 +522,13 @@ function anadirCarro(event) {
   // Obtengo el título
   const textArticulo = nombreArticulo.textContent;
 
-  //Si o esta el carro creado
+  var carro = JSON.parse(localStorage.getItem("Carro" + logued)) || [];
+
   // Llamada a la función getArticulo que ahora devuelve una promesa
   getArticulo(textArticulo).then((articulo) => {
+    carro.push(articulo);
     //Añado el articulo en el localstorage.Me aseguro que es el caro del usuario
-    localStorage.setItem("Carro" + logued, JSON.stringify(articulo));
+    localStorage.setItem("Carro" + logued, JSON.stringify(carro));
   });
 }
 

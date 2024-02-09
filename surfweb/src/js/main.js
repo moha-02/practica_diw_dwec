@@ -4,6 +4,7 @@ import "../bootstrap-5.3.2/scss/bootstrap-reboot.scss";
 import "../bootstrap-5.3.2/scss/bootstrap-grid.scss";
 import "./crud";
 import "./productos";
+import "./carro";
 
 //Validacion formulario registro
 (function () {
