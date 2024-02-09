@@ -1,6 +1,6 @@
 var map = L.map("map").setView([51.505, -0.09], 13);
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
+  maxZoom: 60,
   attribution:
     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
@@ -119,14 +119,17 @@ function success(pos){
         zoomed = map.fitBounds(circle.getBounds());
     }
     map.setView([lat,lng]);
-    marker.on("click",function(e){
-        alert("Lat: "+e.latlng.lat+" Lng: "+e.latlng.lng);
+
+    marker.bindPopup("Estas aqui");
+    marker.on('mouseover', function (e) {
+        this.openPopup();
+    });
+    marker.on('mouseout', function (e) {
+        this.closePopup();
     });
 
     let beaches = L.geoJSON(beachesData).addTo(map);
-    beaches.on("click",function(e){
-        alert("Lat: "+e.latlng.lat+" Lng: "+e.latlng.lng);
-    });
+    
 }
 function error(err){
     if(err.code === 1){
