@@ -2,6 +2,7 @@ import "../bootstrap-5.3.2/scss/bootstrap.scss";
 import "../bootstrap-5.3.2/scss/bootstrap-utilities.scss";
 import "../bootstrap-5.3.2/scss/bootstrap-reboot.scss";
 import "../bootstrap-5.3.2/scss/bootstrap-grid.scss";
+<<<<<<< HEAD
 import "./crud";
 import "./productos";
 
@@ -45,3 +46,9 @@ function validatePassword() {
 
 registerPassword.onchange = validatePassword;
 registerPasswordConfirm.onkeyup = validatePassword;
+=======
+import "../scss/styles.scss";
+import "./productos.js";
+//import "./crud.js";
+import "./weather";
+>>>>>>> origin/mooha
