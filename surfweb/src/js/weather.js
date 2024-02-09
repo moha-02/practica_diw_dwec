@@ -129,6 +129,9 @@ function success(pos){
     });
 
     let beaches = L.geoJSON(beachesData).addTo(map);
+    beaches.on('click',function(e){
+      
+    })
     
 }
 function error(err){
