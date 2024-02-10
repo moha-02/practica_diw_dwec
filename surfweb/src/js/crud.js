@@ -108,3 +108,33 @@ function cierreSesion() {
   divLogued.setAttribute("hidden", "true");
   window.location.href = "../index.html";
 }
+
+//Eliminar usuario
+
+const btnBorrarPerfil = document.querySelector("#btnBorrarCuenta");
+btnBorrarPerfil.addEventListener("click", borrarCuenta);
+
+function borrarCuenta() {
+  const logued = localStorage.getItem("User");
+
+  //Elimino el usuario del IndexDB
+  const transaction = db.result.transaction(["User"], "readwrite");
+  const userTable = transaction.objectStore("User").getAll();
+  userTable.onsuccess = function (ev) {
+    const user = ev.target.result;
+    for (let i = 0; i < user.length; i++) {
+      if (user[i].username === logued) {
+        console.log(logued);
+        console.log(user[i].username);
+        transaction.objectStore("User").delete(user[i].email);
+        break;
+      }
+    }
+  };
+  //Elimino su carro de compra del localStorage
+  localStorage.removeItem("Carro" + logued);
+  // Lo quito de la sesion
+  localStorage.setItem("User", "");
+  //Me dirijo a la pantalla de inicio
+  window.location.href = "../index.html";
+}

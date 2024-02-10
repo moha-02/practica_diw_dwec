@@ -8,11 +8,11 @@ const logued = localStorage.getItem("User");
 var carro = JSON.parse(localStorage.getItem("Carro" + logued));
 
 function contadorCarro() {
-  if (carro.length > 0) {
+  if (!carro || carro.length === 0) {
+    contadorArticulos.setAttribute("hidden", "true");
+  } else {
     contadorArticulos.removeAttribute("hidden");
     contadorArticulos.innerHTML = carro.length;
-  } else {
-    contadorArticulos.setAttribute("hidden", "true");
   }
 }
 //Cadd 1seg se ejecuta la función
