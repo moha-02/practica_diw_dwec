@@ -18,6 +18,14 @@ function contadorCarro() {
 //Cadd 1seg se ejecuta la función
 setInterval(contadorCarro, 1000);
 
+const contadores = {};
+
+// Contar la cantidad de veces que aparece cada objeto único
+carro.forEach((articulo) => {
+  const articuloString = JSON.stringify(articulo);
+  contadores[articuloString] = (contadores[articuloString] || 0) + 1;
+});
+
 //Manejo de los items de la tienda
 function carrito() {
   //Div del carrito
@@ -26,21 +34,8 @@ function carrito() {
   // Quitamos lo que habia en el carro para que no se duplique
   divCarro.innerHTML = "";
 
-  //Obtengo el usuario logueado
-  const User = localStorage.getItem("User");
-  //Obtengo su cesta
-  const cestaUsuario = JSON.parse(localStorage.getItem("Carro" + logued));
-
-  const contadores = {};
-
-  // Contar la cantidad de veces que aparece cada objeto único
-  cestaUsuario.forEach((articulo) => {
-    const articuloString = JSON.stringify(articulo);
-    contadores[articuloString] = (contadores[articuloString] || 0) + 1;
-  });
-
   // Utilizo un conjunto para obtener objetos únicos
-  const conjuntoArticulosUnicos = new Set(cestaUsuario.map(JSON.stringify));
+  const conjuntoArticulosUnicos = new Set(carro.map(JSON.stringify));
 
   // Converto el conjunto nuevamente a un array
   const arrayArticulosUnicos = Array.from(conjuntoArticulosUnicos).map(
@@ -98,6 +93,9 @@ function carrito() {
     btnMas.className = "btn btn-info btn-sm btnMas";
     btnMas.textContent = "+";
 
+    // Añado los event listeners para los botones menos y más
+    btnMenos.addEventListener("click", quitarArticulo);
+    btnMas.addEventListener("click", anadirArticulo);
     //Agrego los elementos al DOM
     colImgDiv.appendChild(img);
     colInfoDiv.appendChild(cardBodyDiv);
@@ -121,3 +119,66 @@ function carrito() {
 
 const btnCarro = document.querySelector("#btnCarrito");
 btnCarro.addEventListener("click", carrito);
+
+//Funcion para añadir articulos
+function anadirArticulo(evento) {
+  // Acceso al botón clicado
+  const btn = evento.target;
+  //Acceso a la card del boton pulsado
+  const card = btn.parentNode.parentNode;
+  //Acceso al titulo para poder diferncairlo en el array
+  const h5 = card.querySelector("h5");
+  //Contenido de la etiqueta
+  const nombre = h5.textContent;
+  //obtengo la etiqueta donde reside el numero
+  const span = card.querySelector("span");
+
+  for (i in carro) {
+    if (carro[i].nombre === nombre) {
+      //Lo pongo en el array
+      carro.push(carro[i]);
+      //Añado el articulo en el localstorage.Me aseguro que es el caro del usuario
+      localStorage.setItem("Carro" + logued, JSON.stringify(carro));
+      // Incremento el contador de artículos en el span correspondiente
+      contadores[JSON.stringify(carro[i])] += 1;
+      span.innerHTML =
+        "<strong>" + contadores[JSON.stringify(carro[i])] + "</strong>";
+      //Salgo del bucle
+      break;
+    }
+  }
+}
+
+//Funcion para quitqr articulos
+function quitarArticulo(evento) {
+  // Acceso al botón clicado
+  const btn = evento.target;
+  //Acceso a la card del boton pulsado
+  const card = btn.closest(".card");
+  //Acceso al titulo para poder diferncairlo en el array
+  const h5 = card.querySelector("h5");
+  //Contenido de la etiqueta
+  const nombre = h5.textContent;
+  //obtengo la etiqueta donde reside el numero
+  const span = card.querySelector("span");
+
+  for (i in carro) {
+    if (carro[i].nombre === nombre) {
+      //Lo pongo en el array
+      carro.splice(i, 1);
+      //Añado el articulo en el localstorage.Me aseguro que es el caro del usuario
+      localStorage.setItem("Carro" + logued, JSON.stringify(carro));
+      // Incremento el contador de artículos en el span correspondiente
+      contadores[JSON.stringify(carro[i])] -= 1;
+      if (contadores[JSON.stringify(carro[i])] == 0) {
+        // quito la carta
+        card.remove();
+      } else {
+        span.innerHTML =
+          "<strong>" + contadores[JSON.stringify(carro[i])] + "</strong>";
+      }
+      //Salgo del bucle
+      break;
+    }
+  }
+}
