@@ -416,7 +416,7 @@
                           <span id="usuarioInicio"></span>
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Editar perfil</a>
+                        <a class="dropdown-item" href="#"data-bs-toggle="modal" data-bs-target="#UpdateModal" id="btnEditar" >Editar perfil</a>
                         <a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#DeleteModal">Eliminar cuenta</a>
                         <a class="dropdown-item" id="cerrarSession" href="#">Cerrar sessión</a>
                         <a class="dropdown-item" href="#">Salir</a>
@@ -440,12 +440,38 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" id="btnBorrarCuenta" class="btn btn-danger">Elimnar Cuenta</button>
+                            <button type="button" id="btnBorrarCuenta" class="btn btn-danger" >Elimnar Cuenta</button>
                         </div>
                         </div>
                       </div>
                     </div>
                 <!-- modal borrar cuenta -->
+
+                <!-- modal editar cuenta -->
+                        <!-- Modal -->
+                        <div class="modal fade" id="UpdateModal" tabindex="-1" role="dialog" aria-labelledby="UpdateCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Actualizar cuenta</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                            <div class="modal-body">
+                              <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="basic-addon1">@</span>
+                                    </div>
+                                      <input type="text" class="form-control" id="inputCambioUsername" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" id="btnActualizarCuenta" class="btn btn-warning" >Actualizar Cuenta</button>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                    <!-- modal borrar cuenta -->               
 
               </div>
               <!-- div del USUARIO YA LOGUEADO -->

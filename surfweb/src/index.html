@@ -42,7 +42,7 @@
                 </p></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./web/tore.html"><p class="h4 text-muted " style="font-style: italic">
+                <a class="nav-link" href="./web/store.html"><p class="h4 text-muted " style="font-style: italic">
                   Tienda
                 </p></a>
               </li>
@@ -322,6 +322,7 @@
           </div>
           <!-- Reguister modal -->
         </div>
+
         <!-- div del login y register -->
 
               <!-- div del USUARIO YA LOGUEADO -->
@@ -397,7 +398,7 @@
                   <ul class="navbar-nav ml-auto nav-flex-icons">
                     <li class="nav-item">
                       
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="#sidebar" data-bs-toggle="offcanvas" role="button" aria-controls="sidebar" id="btnCarrito" >
                         <span class="badge badge-pill bg-danger" id="contadorArticulos" hidden="true"></span>
                         <span>
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
@@ -415,6 +416,8 @@
                           <span id="usuarioInicio"></span>
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#"data-bs-toggle="modal" data-bs-target="#UpdateModal" >Editar perfil</a>
+                        <a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#DeleteModal">Eliminar cuenta</a>
                         <a class="dropdown-item" id="cerrarSession" href="#">Cerrar sessión</a>
                         <a class="dropdown-item" href="#">Salir</a>
                       </div>
@@ -422,6 +425,49 @@
                   </ul>
                 </div>
                 <!-- Right elements -->
+
+                <!-- modal borrar cuenta -->
+                        <!-- Modal -->
+                    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="DeleteCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Borrar cuenta</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                        <div class="modal-body">
+                                ¿Estas seguro de que quieres elimnar tu cuenta?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" id="btnBorrarCuenta" class="btn btn-danger" >Elimnar Cuenta</button>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                <!-- modal borrar cuenta -->
+
+                <!-- modal editar cuenta -->
+                        <!-- Modal -->
+                        <div class="modal fade" id="UpdateModal" tabindex="-1" role="dialog" aria-labelledby="UpdateCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Actualizar cuenta</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                            <div class="modal-body">
+                                    <input type="text" id="inputCambioUsername">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" id="btnActualizarCuenta" class="btn btn-warning" >Actualizar Cuenta</button>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                    <!-- modal borrar cuenta -->
+
               </div>
               <!-- div del USUARIO YA LOGUEADO -->
       </nav>
@@ -539,12 +585,12 @@
             <div class="col">
               <div class="card h-80">
                 <img
-                  src="./assets/"
+                  src="./assets/store/life1.webp"
                   class="card-img-top"
                   height="300"
                 />
                 <div class="card-body">
-                  <h5 class="card-title">Windsurf</h5>
+                  <h5 class="card-title">Lifestyle</h5>
                 </div>
               </div>
             </div>
@@ -559,7 +605,21 @@
           </div>
         </article>
       </main>
+      <!-- offcanvas -->
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="sidebar" aria-labelledby="sidebar-label" >
+        <div class="offcanvas-header">
+          <h5 id="offcanvasTopLabel">Carrito</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="row row-cols-1 row-cols-md-1 g-4 mt-1" id="divCarro">
+            
+          </div> 
+        </div>           
+      </div>
+        <!-- offcanvas -->
     </div>
+    <!-- final conatiner -->
     <script src="./main.js"></script>
   </body>
 </html>

@@ -138,3 +138,56 @@ function borrarCuenta() {
   //Me dirijo a la pantalla de inicio
   window.location.href = "../index.html";
 }
+
+//Update usuario
+
+function actualizarCuenta() {
+  //obtengo el valor del input
+  var newUsername = document.querySelector("#inputCambioUsername").value;
+  console.log(newUsername);
+  const logued = localStorage.getItem("User");
+  //Obtengo el carro del Usario
+  var carro = JSON.parse(localStorage.getItem("Carro" + logued));
+  //Elimino el carro porque lo vamos a actualizar
+  localStorage.removeItem("Carro" + logued);
+
+  //Edito el usuario del IndexDB
+  const transaction = db.result.transaction(["User"], "readwrite");
+  const userTable = transaction.objectStore("User").getAll();
+  userTable.onsuccess = function (ev) {
+    const user = ev.target.result;
+    for (let i = 0; i < user.length; i++) {
+      if (user[i].username === logued) {
+        transaction.objectStore("User").put({
+          email: user[i].email,
+          username: newUsername,
+          password: user[i].password,
+        });
+        break;
+      }
+    }
+  };
+  //Pongo el logued actualizado
+  localStorage.setItem("User", newUsername);
+  //Subo el carro al locastorage,Actulizado
+  localStorage.setItem("Carro" + newUsername, JSON.stringify(carro));
+
+  window.location.href = "../index.html";
+}
+
+//Editar boton usuario
+const btnActualizarUser = document.querySelector("#btnActualizarCuenta");
+btnActualizarUser.addEventListener("click", actualizarCuenta);
+
+//Ponser el valor en el input del usuario que esta logueado
+function obtenerInputEdit() {
+  const logued = localStorage.getItem("User");
+  //obtengo el input
+  const inputEdit = document.querySelector("#inputCambioUsername");
+
+  inputEdit.value = logued;
+}
+
+//Obtención del input
+const btnEdit = document.querySelector("#btnEditar");
+btnEdit.addEventListener("click", obtenerInputEdit);
