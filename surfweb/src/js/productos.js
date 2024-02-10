@@ -1,25 +1,5 @@
 const divTienda = document.querySelector("#divTienda");
 
-//Activación botones filtros
-
-const btnTodos = document.querySelector("#btnTodos");
-btnTodos.addEventListener("click", getAllArticulos);
-
-const btnTabla = document.querySelector("#btnTablas");
-btnTabla.addEventListener("click", getTablas);
-
-const btnNeoprenos = document.querySelector("#btnNeoprenos");
-btnNeoprenos.addEventListener("click", getNeoprenos);
-
-const btnBodyboards = document.querySelector("#btnBodyboards");
-btnBodyboards.addEventListener("click", getBodyboards);
-
-const btnAccesorios = document.querySelector("#btnAccesorios");
-btnAccesorios.addEventListener("click", getAccesorios);
-
-const btnLifestyle = document.querySelector("#btnLifestyle");
-btnLifestyle.addEventListener("click", getLifetyle);
-
 //Productos
 const articulos = [
   {
@@ -184,7 +164,7 @@ request.onupgradeneeded = (event) => {
 
 /////////// Filtros /////////////////
 
-//Todos
+// Filtro Todos
 function getAllArticulos() {
   divTienda.innerHTML = "";
   const transaction = request.result.transaction(["Tienda"], "readwrite");
@@ -236,7 +216,10 @@ function getAllArticulos() {
   };
 }
 
-//Tablas
+const btnTodos = document.querySelector("#btnTodos");
+btnTodos.addEventListener("click", getAllArticulos);
+
+// Filtro Tablas
 function getTablas() {
   divTienda.innerHTML = "";
   const transaction = request.result.transaction(["Tienda"], "readwrite");
@@ -289,7 +272,10 @@ function getTablas() {
   };
 }
 
-//Neoprenos
+const btnTabla = document.querySelector("#btnTablas");
+btnTabla.addEventListener("click", getTablas);
+
+// Filtro Neoprenos
 
 function getNeoprenos() {
   divTienda.innerHTML = "";
@@ -343,7 +329,10 @@ function getNeoprenos() {
   };
 }
 
-//Bodyboards
+const btnNeoprenos = document.querySelector("#btnNeoprenos");
+btnNeoprenos.addEventListener("click", getNeoprenos);
+
+// Filtro Bodyboards
 
 function getBodyboards() {
   divTienda.innerHTML = "";
@@ -397,7 +386,10 @@ function getBodyboards() {
   };
 }
 
-//Accesorios
+const btnBodyboards = document.querySelector("#btnBodyboards");
+btnBodyboards.addEventListener("click", getBodyboards);
+
+//Filtro Accesorios
 
 function getAccesorios() {
   divTienda.innerHTML = "";
@@ -451,6 +443,10 @@ function getAccesorios() {
   };
 }
 
+// Filtro lifestyle
+const btnAccesorios = document.querySelector("#btnAccesorios");
+btnAccesorios.addEventListener("click", getAccesorios);
+
 function getLifetyle() {
   divTienda.innerHTML = "";
   const transaction = request.result.transaction(["Tienda"], "readwrite");
@@ -502,6 +498,9 @@ function getLifetyle() {
     }
   };
 }
+//Boton del filtro lifestyle
+const btnLifestyle = document.querySelector("#btnLifestyle");
+btnLifestyle.addEventListener("click", getLifetyle);
 
 // Añadir articulo al carro
 const btnComprar = document.querySelectorAll(".btnPushCarro");
@@ -529,6 +528,7 @@ function anadirCarro(event) {
     carro.push(articulo);
     //Añado el articulo en el localstorage.Me aseguro que es el caro del usuario
     localStorage.setItem("Carro" + logued, JSON.stringify(carro));
+    location.reload();
   });
 }
 

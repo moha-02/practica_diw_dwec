@@ -5,6 +5,7 @@ import "../bootstrap-5.3.2/scss/bootstrap-grid.scss";
 import "./crud";
 import "./productos";
 import "./carro";
+import "./weather";
 
 //Validacion formulario registro
 (function () {
