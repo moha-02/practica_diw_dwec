@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Map dependencies -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <!-- /Map dependencies -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Weather</title>
-    <!-- Map dependencies -->
-    
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""/>
-    <!-- /Map dependencies -->
-    
   </head>
   <body>
-    <div class="container py-4 px-3 mx-auto">
-    <div class="container py-4 px-3 mx-auto">
+    <div class="container py-4  ">
+    <div class="container py-4  ">
       <!-- Navbar-->
       <nav
         class="navbar navbar-expand-lg navbar-light bg-body-tertiary"
@@ -309,12 +307,12 @@
    
 
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-lg-8">
           <!--  Map -->
-          <div id="map" class="rounded border border-primary"></div>
+          <div id="map" style="width: 100%; height: 650px;" class="border border-primary rounded "></div>
           <!-- /tMap -->
       </div>
-      <div class="col-sm-4">
+      <div class="col-lg-4">
         <!--  Weather -->
         <div class="container-fluid">
           <div class="row justify-content">
@@ -332,21 +330,16 @@
                                 <p class="my-1">
                                     <img src="https://i.imgur.com/B9kqOzp.png" height="17px" >
             
-                                   <span> 40 km/h  </span>
+                                   <span id="wind"></span>
                                 </p>
-
-                                <p class="my-1"> 
-                                  <i class="bi bi-search"></i>
-                                </p>
-
                                 <p class="my-1"> 
                                     <img src="https://i.imgur.com/wGSJ8C5.png" height="17px" >
-                                    <span> 0.2h </span>
+                                    <span id="day_light">  </span>
                                 </p>
                            </div>
                            
                            <div>
-                               <img src="https://i.imgur.com/Qw7npIg.png" width="100px">
+                               <div id="weather_icon" class="weather_icon"></div>
                            </div>
                            
                            
@@ -360,10 +353,6 @@
     
 
     <!--script  Map -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin="">
-    </script>
     <script src="../main.js"></script>
     <!-- /scriptMap -->
   </div>
