@@ -1,3 +1,5 @@
+//Register validación
+
 document.getElementById("registrationForm").addEventListener(
   "submit",
   function (event) {
@@ -6,47 +8,47 @@ document.getElementById("registrationForm").addEventListener(
     var password = document.getElementById("registerPassword");
     var confirmPassword = document.getElementById("registerPasswordConfirm");
 
-    // Validación del nombre de usuario
+    // Validación Username
     if (!username.checkValidity()) {
       event.preventDefault();
       event.stopPropagation();
       username.classList.add("is-invalid");
     } else {
       username.classList.remove("is-invalid"); // Quita la clase is-invalid si es válido
-      username.classList.add("was-validated"); // Añade la clase was-validated
+      username.classList.add("was-validated");
     }
 
-    // Validación del correo electrónico
+    // Validación Email
     if (!email.checkValidity()) {
       event.preventDefault();
       event.stopPropagation();
       email.classList.add("is-invalid");
     } else {
-      email.classList.remove("is-invalid"); // Quita la clase is-invalid si es válido
-      email.classList.add("was-validated"); // Añade la clase was-validated
+      email.classList.remove("is-invalid");
+      email.classList.add("was-validated");
     }
 
-    // Validación de la contraseña
+    // Validación password
     if (!password.checkValidity()) {
       event.preventDefault();
       event.stopPropagation();
       password.classList.add("is-invalid");
     } else {
-      password.classList.remove("is-invalid"); // Quita la clase is-invalid si es válido
-      password.classList.add("was-validated"); // Añade la clase was-validated
+      password.classList.remove("is-invalid");
+      password.classList.add("was-validated");
     }
 
-    // Validación de la confirmación de contraseña
+    // Validación de la confirmación del password
     if (password.value !== confirmPassword.value) {
       event.preventDefault();
       event.stopPropagation();
       confirmPassword.classList.add("is-invalid");
     } else {
-      confirmPassword.classList.remove("is-invalid"); // Quita la clase is-invalid si es válido
-      confirmPassword.classList.add("was-validated"); // Añade la clase was-validated
+      confirmPassword.classList.remove("is-invalid");
+      confirmPassword.classList.add("was-validated");
     }
 
-    // Añade la clase was-validated a todos los campos
+    // Añade la clase was-validated a todos los campos para confirmarlos
     email.classList.add("was-validated");
     password.classList.add("was-validated");
     confirmPassword.classList.add("was-validated");
@@ -54,7 +56,7 @@ document.getElementById("registrationForm").addEventListener(
   false
 );
 
-// Controlador de eventos para quitar la clase is-invalid cuando el usuario empieza a escribir en el campo
+//Controladores
 document
   .getElementById("registerUsername")
   .addEventListener("input", function () {
@@ -76,6 +78,45 @@ document
   .addEventListener("input", function () {
     this.classList.remove("is-invalid");
   });
+
+//Login validación
+document.getElementById("loginForm").addEventListener(
+  "submit",
+  function (event) {
+    var email = document.getElementById("loginEmail");
+    var password = document.getElementById("loginPassword");
+
+    if (!email.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+      email.classList.add("is-invalid");
+    } else {
+      email.classList.remove("is-invalid");
+      email.classList.add("was-validated");
+    }
+
+    if (!password.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+      password.classList.add("is-invalid");
+    } else {
+      password.classList.remove("is-invalid");
+      password.classList.add("was-validated");
+    }
+
+    email.classList.add("was-validated");
+    password.classList.add("was-validated");
+  },
+  false
+);
+
+document.getElementById("loginEmail").addEventListener("input", function () {
+  this.classList.remove("is-invalid");
+});
+
+document.getElementById("loginPassword").addEventListener("input", function () {
+  this.classList.remove("is-invalid");
+});
 
 //Confirmación del password
 var registerPassword = document.getElementById("registerPassword");

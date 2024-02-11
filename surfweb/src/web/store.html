@@ -11,6 +11,14 @@
     ></script>
   </head>
   <body>
+    <!-- cargador de la pagina -->
+      <div class="preloader-wrapper">
+        <div class="spinner-border text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    
+    <!-- cargador de la pagina -->
     <div class="container py-4 px-3 mx-auto">
       <!-- Navbar--> 
       <nav
@@ -130,7 +138,7 @@
                   ></button>
                 </div>
                 <div class="modal-body">
-                  <form class="needs-validation" novalidate autocomplete="off">
+                  <form class="needs-validation" id="loginForm" novalidate autocomplete="off">
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                       <input
@@ -141,7 +149,7 @@
                         required
                       />
                       <div class="invalid-feedback">
-                        Correo electronico inexistente. Por favor introduzcalo de nuevo
+                        Error al introducir el correo. Por favor introduzcalo de nuevo.
                       </div>
                     </div>
 
@@ -184,7 +192,7 @@
 
                     <div class="modal-footer">
                       <button
-                        type="button"
+                        type="submit"
                         class="btn btn-primary btn-block mb-4"
                         id="buttonSignin"
                       >

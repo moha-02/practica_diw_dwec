@@ -166,13 +166,13 @@ function quitarArticulo(evento) {
 
   for (i in carro) {
     if (carro[i].nombre === nombre) {
-      //Lo pongo en el array
+      //Lo quito del el array
       carro.splice(i, 1);
       //Añado el articulo en el localstorage.Me aseguro que es el caro del usuario
       localStorage.setItem("Carro" + logued, JSON.stringify(carro));
       // Incremento el contador de artículos en el span correspondiente
       contadores[JSON.stringify(carro[i])] -= 1;
-      if (contadores[JSON.stringify(carro[i])] == 0) {
+      if (contadores[JSON.stringify(carro[i])] === 0) {
         // quito la carta
         card.remove();
       } else {

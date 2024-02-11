@@ -15,8 +15,10 @@ registerCreate.addEventListener("click", insertarUser);
 btnCerrarsession.addEventListener("click", cierreSesion);
 
 // Comprobacion sesion
-
 window.onload = function () {
+  var cargador = document.querySelector(".preloader-wrapper");
+  cargador.style.visibility = "hidden";
+  cargador.style.opacity = "0";
   const sesion = localStorage.getItem("User");
   console.log(sesion);
   if (sesion) {
