@@ -6,6 +6,7 @@
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
     <!-- /Map dependencies -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Weather</title>
@@ -316,33 +317,32 @@
         <!--  Weather -->
         <div class="container-fluid">
           <div class="row justify-content">
-            
-              <div class="card p-4">    
-                <div class="d-flex">
-                  <h6 class="flex-grow-1" id="nombreUbicacion">Nombre Ubicacion</h6>
+              <div class="card p-4 bg-primary">    
+                <div class="d-flex fs-3">
+                  <i class="bi bi-geo-fill"></i>
+                  <h4 class="flex-grow-1" id="nombreUbicacion"> You </h4>
                 </div>
                 <div class="d-flex flex-column temp mt-5 mb-3">
-                  <h1 class="mb-0 font-weight-bold" id="heading"> 13&deg; C </h1>
-                  <span class="small grey" id="descripcion">Stormy</span>
+                  <h3 class="mb-0 font-weight-bold" id="temperature"></h3>
                 </div>
                 <div class="d-flex">
                            <div class="temp-details flex-grow-1">
-                                <p class="my-1">
-                                    <img src="https://i.imgur.com/B9kqOzp.png" height="17px" >
-            
-                                   <span id="wind"></span>
+                                <p class="my-1 fs-3">
+                                  <i class="bi bi-wind"></i>
+                                   <span id="wind">10 kmh</span>
                                 </p>
-                                <p class="my-1"> 
-                                    <img src="https://i.imgur.com/wGSJ8C5.png" height="17px" >
-                                    <span id="day_light">  </span>
+                                <p class="my-1 fs-3"> 
+                                    <i class="bi bi-sun-fill"></i>
+                                    <span id="day_light"> 12h </span>
                                 </p>
+                                <p class="my-1 fs-3"> 
+                                  <i class="bi bi-droplet-half"></i>
+                                  <span id="precipitation"> 8% </span>
+                              </p>
+                              <div id="weather_icon" class="weather_icon flex-grow-1">
+                                <img src="../assets/sun.png" class="weather_icon flex-grow-1"/>
+                              </div>
                            </div>
-                           
-                           <div>
-                               <div id="weather_icon" class="weather_icon"></div>
-                           </div>
-                           
-                           
                        </div>
               </div>
           </div>

@@ -6,7 +6,9 @@ const beachesData = {
   features: [
     {
       type: "Feature",
-      properties: {},
+      properties: {
+        name: "Alcúdia",
+      },
       geometry: {
         coordinates: [3.1222629999997196, 39.83529995422947],
         type: "Point",
@@ -14,7 +16,9 @@ const beachesData = {
     },
     {
       type: "Feature",
-      properties: {},
+      properties: {
+        name: "Platja de Muro",
+      },
       geometry: {
         coordinates: [3.1182290000010937, 39.808469999999744],
         type: "Point",
@@ -23,7 +27,9 @@ const beachesData = {
     },
     {
       type: "Feature",
-      properties: {},
+      properties: {
+        name: "Son Serra de Marina",
+      },
       geometry: {
         coordinates: [3.2302330954923377, 39.73452866150288],
         type: "Point",
@@ -31,7 +37,9 @@ const beachesData = {
     },
     {
       type: "Feature",
-      properties: {},
+      properties: {
+        name: "Cala Rajada",
+      },
       geometry: {
         coordinates: [3.461038783845055, 39.709515088862105],
         type: "Point",
@@ -39,7 +47,9 @@ const beachesData = {
     },
     {
       type: "Feature",
-      properties: {},
+      properties: {
+        name: "Cala Mesquida",
+      },
       geometry: {
         coordinates: [3.433579957671782, 39.74401849899027],
         type: "Point",
@@ -47,7 +57,9 @@ const beachesData = {
     },
     {
       type: "Feature",
-      properties: {},
+      properties: {
+        name: "Canyamel",
+      },
       geometry: {
         coordinates: [3.440556138020071, 39.65657143073335],
         type: "Point",
@@ -55,7 +67,9 @@ const beachesData = {
     },
     {
       type: "Feature",
-      properties: {},
+      properties: {
+        name: "Badia de Palma",
+      },
       geometry: {
         coordinates: [2.6628426962996627, 39.56199006824946],
         type: "Point",
@@ -63,7 +77,9 @@ const beachesData = {
     },
     {
       type: "Feature",
-      properties: {},
+      properties: {
+        name: "Can Pastilla",
+      },
       geometry: {
         coordinates: [2.7194169999995665, 39.53445582358958],
         type: "Point",
@@ -71,7 +87,9 @@ const beachesData = {
     },
     {
       type: "Feature",
-      properties: {},
+      properties: {
+        name: "Colonia de San Pedro",
+      },
       geometry: {
         coordinates: [3.2800377375358494, 39.73802960523136],
         type: "Point",
@@ -79,7 +97,9 @@ const beachesData = {
     },
     {
       type: "Feature",
-      properties: {},
+      properties: {
+        name: "Puerto de Pollensa",
+      },
       geometry: {
         coordinates: [3.083451594015145, 39.907001387983854],
         type: "Point",
@@ -415,6 +435,7 @@ function success(pos) {
   });
 
   let beaches = L.geoJSON(beachesData).addTo(map);
+
   beaches.on("click", async function (e) {
     let lat = e.layer.feature.geometry.coordinates[1];
     let longitude = e.layer.feature.geometry.coordinates[0];
@@ -426,15 +447,24 @@ function success(pos) {
       "&daily=weather_code,temperature_2m_max,temperature_2m_min,daylight_duration,precipitation_probability_max,wind_speed_10m_max&timeformat=unixtime&timezone=auto&forecast_days=1"
     );
     let data = await info.json();
+    console.log(data);
+
     let img = document.createElement("img");
     img.src = icon[data.daily.weather_code[0]].day.image;
-    img.class = "weather_icon";
+    img.style.width = "100%";
+    img.style.height = "100%";
     let wind_peed = data.daily.wind_speed_10m_max[0];
     let hours = Math.floor(data.daily.daylight_duration / 3600);
+    let temperature = data.daily.temperature_2m_max[0];
+    let precipitation = data.daily.precipitation_probability_max[0];
+    let nombreUbicacion = e.layer.feature.properties.name;
 
     document.getElementById("day_light").innerHTML = hours + "h";
     document.getElementById("wind").innerHTML = wind_peed + " km/h";
     document.getElementById("weather_icon").innerHTML = img.outerHTML;
+    document.getElementById("temperature").innerHTML = temperature + "°C";
+    document.getElementById("precipitation").innerHTML = precipitation + "%";
+    document.getElementById("nombreUbicacion").innerHTML = nombreUbicacion;
 
   });
 }
@@ -442,5 +472,8 @@ function error(err) {
   if (err.code === 1) {
     alert("Permitir acceso a ubucacion");
   }
+}
+function returnWeahter(lat,longitude){
+
 }
 navigator.geolocation.watchPosition(success, error);
