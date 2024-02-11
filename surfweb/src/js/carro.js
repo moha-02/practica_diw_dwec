@@ -21,10 +21,12 @@ setInterval(contadorCarro, 1000);
 const contadores = {};
 
 // Contar la cantidad de veces que aparece cada objeto único
-carro.forEach((articulo) => {
-  const articuloString = JSON.stringify(articulo);
-  contadores[articuloString] = (contadores[articuloString] || 0) + 1;
-});
+if (carro) {
+  carro.forEach((articulo) => {
+    const articuloString = JSON.stringify(articulo);
+    contadores[articuloString] = (contadores[articuloString] || 0) + 1;
+  });
+}
 
 //Manejo de los items de la tienda
 function carrito() {

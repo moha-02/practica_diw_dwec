@@ -2,15 +2,15 @@ import "../bootstrap-5.3.2/scss/bootstrap.scss";
 import "../bootstrap-5.3.2/scss/bootstrap-utilities.scss";
 import "../bootstrap-5.3.2/scss/bootstrap-reboot.scss";
 import "../bootstrap-5.3.2/scss/bootstrap-grid.scss";
-//import "./crud";
-//import "./productos";
-//import "./carro";
+import "./crud";
+import "./productos";
+import "./carro";
 import "./weather";
 import "../scss/styles.scss";
 
-
-/*
 //Validacion formulario registro
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+// Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
   "use strict";
 
@@ -50,4 +50,3 @@ function validatePassword() {
 
 registerPassword.onchange = validatePassword;
 registerPasswordConfirm.onkeyup = validatePassword;
-*/
