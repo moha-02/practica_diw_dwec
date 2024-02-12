@@ -1,5 +1,15 @@
 import L from "leaflet";
-document.getElementById("weathermap").innerHTML ="<div id='map' style='width: 100%; height: 650px;'></div>";
+let spinner = document.getElementById("spinner");
+
+if (spinner) {
+
+  setTimeout(() => {
+    spinner.remove();
+  }, 2000);
+}
+
+document.getElementById("weathermap").innerHTML =
+  "<div id='map' style='width: 100%; height: 650px;'></div>";
 
 const beachesData = {
   type: "FeatureCollection",
@@ -426,25 +436,54 @@ function success(pos) {
   }
   map.setView([lat, lng]);
 
-  marker.bindPopup("Estas aqui");
+  marker.bindPopup("Estas aqui <br> Pulsa para refrescar");
   marker.on("mouseover", function (e) {
     this.openPopup();
   });
   marker.on("mouseout", function (e) {
     this.closePopup();
   });
+  marker.on("click", async function (e) {
+    let lat = e.latlng.lat;
+    let longitude = e.latlng.lng;
+    let info = await fetch(
+      "https://api.open-meteo.com/v1/forecast?latitude=" +
+        lat +
+        "&longitude=" +
+        longitude +
+        "&daily=weather_code,temperature_2m_max,temperature_2m_min,daylight_duration,precipitation_probability_max,wind_speed_10m_max&timeformat=unixtime&timezone=auto&forecast_days=1"
+    );
+    let data = await info.json();
+    console.log(data);
+
+    let img = document.createElement("img");
+    img.src = icon[data.daily.weather_code[0]].day.image;
+    img.style.width = "100%";
+    img.style.height = "100%";
+    let wind_peed = data.daily.wind_speed_10m_max[0];
+    let hours = Math.floor(data.daily.daylight_duration / 3600);
+    let temperature = data.daily.temperature_2m_max[0];
+    let precipitation = data.daily.precipitation_probability_max[0];
+    let nombreUbicacion = "Tu ubicacion";
+
+    document.getElementById("day_light").innerHTML = hours + "h";
+    document.getElementById("wind").innerHTML = wind_peed + " km/h";
+    document.getElementById("weather_icon").innerHTML = img.outerHTML;
+    document.getElementById("temperature").innerHTML = temperature + "°C";
+    document.getElementById("precipitation").innerHTML = precipitation + "%";
+    document.getElementById("nombreUbicacion").innerHTML = nombreUbicacion;
+  });
 
   let beaches = L.geoJSON(beachesData).addTo(map);
-
   beaches.on("click", async function (e) {
     let lat = e.layer.feature.geometry.coordinates[1];
     let longitude = e.layer.feature.geometry.coordinates[0];
     let info = await fetch(
       "https://api.open-meteo.com/v1/forecast?latitude=" +
-      lat +
-      "&longitude=" +
-      longitude +
-      "&daily=weather_code,temperature_2m_max,temperature_2m_min,daylight_duration,precipitation_probability_max,wind_speed_10m_max&timeformat=unixtime&timezone=auto&forecast_days=1"
+        lat +
+        "&longitude=" +
+        longitude +
+        "&daily=weather_code,temperature_2m_max,temperature_2m_min,daylight_duration,precipitation_probability_max,wind_speed_10m_max&timeformat=unixtime&timezone=auto&forecast_days=1"
     );
     let data = await info.json();
     console.log(data);
@@ -465,15 +504,11 @@ function success(pos) {
     document.getElementById("temperature").innerHTML = temperature + "°C";
     document.getElementById("precipitation").innerHTML = precipitation + "%";
     document.getElementById("nombreUbicacion").innerHTML = nombreUbicacion;
-
   });
 }
 function error(err) {
   if (err.code === 1) {
     alert("Permitir acceso a ubucacion");
   }
-}
-function returnWeahter(lat,longitude){
-
 }
 navigator.geolocation.watchPosition(success, error);
