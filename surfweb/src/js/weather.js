@@ -2,11 +2,7 @@ import L from "leaflet";
 let spinner = document.getElementById("spinner");
 let weathermap = document.getElementById("weathermap");
 
-if (spinner) {
-  setTimeout(() => {
-    spinner.remove();
-  }, 2000);
-}
+
 if(weathermap){
   document.getElementById("weathermap").innerHTML ="<div id='map' style='width: 100%; height: 650px;'></div>"
 }
