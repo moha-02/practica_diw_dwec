@@ -514,15 +514,27 @@ if (btnLifestyle) {
   btnLifestyle.addEventListener("click", getLifetyle);
 }
 
+//Para saber si un usuario esta logueado
+const logued = localStorage.getItem("User");
 // Añadir articulo al carro
 const btnComprar = document.querySelectorAll(".btnPushCarro");
+
 btnComprar.forEach((btn) => {
-  btn.addEventListener("click", anadirCarro);
+  if (logued) {
+    btn.addEventListener("click", anadirCarro);
+  } else {
+    btn.addEventListener("click", avisoLogin);
+  }
 });
 
+//Aviso de que tiene que loguearse para comprar
+function avisoLogin(event) {
+  const btn = event.target;
+  btn.setAttribute("data-bs-toggle", "modal");
+  btn.setAttribute("data-bs-target", "#avisoModal");
+}
 // Añadir al carro
 function anadirCarro(event) {
-  const logued = localStorage.getItem("User");
   // Acceso al botón clicado
   const btn = event.target;
   // Accedo al elemento card que contiene el botón clicado
