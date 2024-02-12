@@ -23,13 +23,15 @@ if (btnCerrarsession) {
 //Funcion pantalla de carga
 const spinnerwrapper = document.querySelector(".spinner-wrapper");
 
-window.addEventListener("load", () => {
-  spinnerwrapper.style.opacity = "0";
+if (spinnerwrapper) {
+  window.addEventListener("load", () => {
+    spinnerwrapper.style.opacity = "0";
 
-  setTimeout(() => {
-    spinnerwrapper.style.display = "none";
-  }, 3000);
-});
+    setTimeout(() => {
+      spinnerwrapper.style.display = "none";
+    }, 3000);
+  });
+}
 
 setTimeout(() => {
   const sesion = localStorage.getItem("User");
