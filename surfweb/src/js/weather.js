@@ -1,5 +1,4 @@
 import L from "leaflet";
-let spinner = document.getElementById("spinner");
 let weathermap = document.getElementById("weathermap");
 
 
