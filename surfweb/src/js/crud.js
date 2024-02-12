@@ -214,14 +214,3 @@ const btnEdit = document.querySelector("#btnEditar");
 if (btnEdit) {
   btnEdit.addEventListener("click", obtenerInputEdit);
 }
-
-//Cerrar pestaña función
-function salir() {
-  window.close();
-}
-
-//Cerrar pestaña
-const btnSalir = document.getElementById("salir");
-if (btnSalir) {
-  btnSalir.addEventListener("click", salir);
-}

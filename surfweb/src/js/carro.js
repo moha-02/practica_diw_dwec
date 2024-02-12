@@ -175,14 +175,16 @@ function quitarArticulo(evento) {
       localStorage.setItem("Carro" + logued, JSON.stringify(carro));
       // Incremento el contador de artículos en el span correspondiente
       contadores[JSON.stringify(carro[i])] -= 1;
-      if (contadores[JSON.stringify(carro[i])] === 0) {
+      if (
+        contadores[JSON.stringify(carro[i])] === 0 ||
+        isNaN(contadores[JSON.stringify(carro[i])])
+      ) {
         // quito la carta
         card.remove();
         location.reload();
       } else {
         span.innerHTML =
           "<strong>" + contadores[JSON.stringify(carro[i])] + "</strong>";
-        location.reload();
       }
       //Salgo del bucle
       break;
