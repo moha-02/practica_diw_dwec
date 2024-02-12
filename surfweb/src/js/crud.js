@@ -14,11 +14,18 @@ registerCreate.addEventListener("click", insertarUser);
 //Cerrar sesion
 btnCerrarsession.addEventListener("click", cierreSesion);
 
-// Comprobacion sesion
-window.onload = function () {
-  var cargador = document.querySelector(".preloader-wrapper");
-  cargador.style.visibility = "hidden";
-  cargador.style.opacity = "0";
+//Funcion pantalla de carga
+const spinnerwrapper = document.querySelector(".spinner-wrapper");
+
+window.addEventListener("load", () => {
+  spinnerwrapper.style.opacity = "0";
+
+  setTimeout(() => {
+    spinnerwrapper.style.display = "none";
+  }, 3000);
+});
+
+setTimeout(() => {
   const sesion = localStorage.getItem("User");
   console.log(sesion);
   if (sesion) {
@@ -29,7 +36,7 @@ window.onload = function () {
     divLogReg.removeAttribute("hidden");
     divLogued.setAttribute("hidden", "true");
   }
-};
+}, 100);
 
 // Si hay un usuario , que se ponga
 const user = localStorage.getItem("User");

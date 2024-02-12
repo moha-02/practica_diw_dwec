@@ -16,8 +16,9 @@ function contadorCarro() {
   }
 }
 //Cadd 1seg se ejecuta la función
-setInterval(contadorCarro, 1000);
+setInterval(contadorCarro, 100);
 
+//
 const contadores = {};
 
 // Contar la cantidad de veces que aparece cada objeto único
@@ -175,9 +176,11 @@ function quitarArticulo(evento) {
       if (contadores[JSON.stringify(carro[i])] === 0) {
         // quito la carta
         card.remove();
+        location.reload();
       } else {
         span.innerHTML =
           "<strong>" + contadores[JSON.stringify(carro[i])] + "</strong>";
+        location.reload();
       }
       //Salgo del bucle
       break;
