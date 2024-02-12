@@ -217,7 +217,9 @@ function getAllArticulos() {
 }
 
 const btnTodos = document.querySelector("#btnTodos");
-btnTodos.addEventListener("click", getAllArticulos);
+if (btnTodos) {
+  btnTodos.addEventListener("click", getAllArticulos);
+}
 
 // Filtro Tablas
 function getTablas() {
@@ -273,7 +275,9 @@ function getTablas() {
 }
 
 const btnTabla = document.querySelector("#btnTablas");
-btnTabla.addEventListener("click", getTablas);
+if (btnTabla) {
+  btnTabla.addEventListener("click", getTablas);
+}
 
 // Filtro Neoprenos
 
@@ -330,7 +334,9 @@ function getNeoprenos() {
 }
 
 const btnNeoprenos = document.querySelector("#btnNeoprenos");
-btnNeoprenos.addEventListener("click", getNeoprenos);
+if (btnNeoprenos) {
+  btnNeoprenos.addEventListener("click", getNeoprenos);
+}
 
 // Filtro Bodyboards
 
@@ -387,7 +393,9 @@ function getBodyboards() {
 }
 
 const btnBodyboards = document.querySelector("#btnBodyboards");
-btnBodyboards.addEventListener("click", getBodyboards);
+if (btnBodyboards) {
+  btnBodyboards.addEventListener("click", getBodyboards);
+}
 
 //Filtro Accesorios
 
@@ -445,7 +453,9 @@ function getAccesorios() {
 
 // Filtro lifestyle
 const btnAccesorios = document.querySelector("#btnAccesorios");
-btnAccesorios.addEventListener("click", getAccesorios);
+if (btnAccesorios) {
+  btnAccesorios.addEventListener("click", getAccesorios);
+}
 
 function getLifetyle() {
   divTienda.innerHTML = "";
@@ -500,7 +510,9 @@ function getLifetyle() {
 }
 //Boton del filtro lifestyle
 const btnLifestyle = document.querySelector("#btnLifestyle");
-btnLifestyle.addEventListener("click", getLifetyle);
+if (btnLifestyle) {
+  btnLifestyle.addEventListener("click", getLifetyle);
+}
 
 // Añadir articulo al carro
 const btnComprar = document.querySelectorAll(".btnPushCarro");

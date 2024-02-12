@@ -1,50 +1,41 @@
 .weather_icon{
-    width: 250px;
-    height: 250px;
+    float: right;
+    width: 300px;
+    height: 240px;
+}
+.circle{
+    width: 150px; 
+    height: 150px;
+}
+#footer_logo{
+    width: 100px;
+    height: 100px;
+}
+.bg-image {
+    background-image: url('../assets/beach.jpg');
+    background-size: cover;
+}
+.bg-custom{
+    background-color: #2e94a7ea;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.overlap {
+    position: absolute;
+    z-index: 9999;
+}
+.overlap-2 {
+    width: 860px;
+    height: 651px;
+    z-index: 9999;
+    background-color: white;
+}
+.spinner-border{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+}
 
 .spinner-wrapper {
     position: fixed;
@@ -59,6 +50,7 @@
     justify-content: center;
     transition: all 3s;
 }
+
 
 #spinnerPagina{
     height: 60px;

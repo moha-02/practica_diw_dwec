@@ -6,6 +6,7 @@
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
     <!-- /Map dependencies -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Weather</title>
@@ -13,12 +14,14 @@
   <body>
     <div class="container py-4  ">
     <div class="container py-4  ">
-      <!-- Navbar-->
+      <!-- Navbar--> 
       <nav
         class="navbar navbar-expand-lg navbar-light bg-body-tertiary"
         style="background-color: #e3f2fd"
+        
       >
-        <div class="container-fluid justify-content-between">
+      <!-- div del login y register -->
+        <div class="container-fluid justify-content-between" id="navloginRegister" >
           <!-- Left elements -->
           <div class="d-flex justify-content-between">
             <!-- Brand -->
@@ -118,7 +121,7 @@
               <div class="modal-content">
                 <div
                   class="modal-header"
-                  style="background-image: url('assets/olaasss.webp')"
+                  style="background-image: url('../assets/olaasss.webp')"
                 >
                   <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
                   <button
@@ -129,7 +132,7 @@
                   ></button>
                 </div>
                 <div class="modal-body">
-                  <form class="needs-validation" novalidate autocomplete="off">
+                  <form class="needs-validation" id="loginForm" novalidate autocomplete="off">
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                       <input
@@ -140,7 +143,7 @@
                         required
                       />
                       <div class="invalid-feedback">
-                        Correo electronico inexistente. Por favor introduzcalo de nuevo
+                        Error al introducir el correo. Por favor introduzcalo de nuevo.
                       </div>
                     </div>
 
@@ -183,7 +186,7 @@
 
                     <div class="modal-footer">
                       <button
-                        type="button"
+                        type="submit"
                         class="btn btn-primary btn-block mb-4"
                         id="buttonSignin"
                       >
@@ -213,70 +216,95 @@
             class="modal fade"
             id="modalRegister"
             tabindex="-1"
+            role="dialog"
+            data-bs-backdrop="static"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
-                <div
+                <div  
                   class="modal-header"
-                  style="background-image: url('assets/olaasss.webp')"
+                  style="background-image: url('../assets/olaasss.webp')"
                 >
                   <h1 class="modal-title fs-5" id="exampleModalLabel">
                     Register
                   </h1>
                   <button
-                    type="button"
+                    type="submit"
                     class="btn-close"
                     data-bs-dismiss="modal"
                     aria-label="Close"
                   ></button>
                 </div>
                 <div class="modal-body">
-                  <form>
+                  <form action="" class="needs-validation" id="registrationForm" novalidate>
                     <!-- Username input -->
                     <div class="form-outline mb-4">
-                      <input
+                      <div class="input-group has-validation">
+                        <input
                         type="text"
-                        id="formUsername"
+                        name="registerUsername"
+                        id="registerUsername"
                         class="form-control"
                         placeholder="Username"
-                      />
+                        required
+                        />
+                        <div class="invalid-feedback">
+                          Por favor introduzca un username
+                        </div>
+                      </div>
+
                     </div>
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                       <input
                         type="email"
-                        id="formEmail"
+                        name="registerEmail"
+                        id="registerEmail"
                         class="form-control"
                         placeholder="Email Address"
+                        required
                       />
+                      <div class="invalid-feedback">
+                        Por favor introduzca un correo electronico
+                      </div>
                     </div>
 
                     <!-- Password input -->
                     <div class="form-outline mb-4">
                       <input
                         type="password"
-                        id="formPassword"
+                        name="registerPassword"
+                        id="registerPassword"
                         class="form-control"
                         placeholder="Create Password"
+                        required
                       />
+                      <div class="invalid-feedback">
+                        Introduzca una contraseña.
+                      </div>
                     </div>
                     <!-- Password input confirm -->
                     <div class="form-outline mb-4">
                       <input
                         type="password"
-                        id="formPasswordConfirm"
+                        name="registerPasswordConfirm"
+                        id="registerPasswordConfirm"
                         class="form-control"
                         placeholder="Confirm Password"
+                        required
                       />
+                      <div class="invalid-feedback">
+                        La contraseña tiene que ser las misma
+                      </div>
                     </div>
 
                     <div class="modal-footer">
                       <button
-                        type="button"
-                        class="btn btn-primary btn-block mb-4"
-                        data-bs-dismiss="modal"
+                      class="btn btn-primary btn-block mb-4"
+                        type="submit"
+                        id="buttonSignup"
                       >
                         Sign Up
                       </button>
@@ -300,6 +328,159 @@
           </div>
           <!-- Reguister modal -->
         </div>
+
+        <!-- div del login y register -->
+
+              <!-- div del USUARIO YA LOGUEADO -->
+              <div class="container-fluid justify-content-between" id="navlogued">
+                <!-- Left elements -->
+                <div class="d-flex justify-content-between">
+                  <!-- Brand -->
+                  <img
+                    src="../assets/logo2.png"
+                    height="50"
+                    loading="lazy"
+                    style="margin-top: -1px"
+                  />
+                  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="../index.html"><p class="h3 text-muted " style="font-style: italic">
+                      Surf N' Chill
+                    </p></a>
+                </div>
+                <div class="collapse navbar-collapse ml-8" id="navbarNav">
+                  <ul class="navbar-nav">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="../index.html"><p class="h4 text-muted " style="font-style: italic">
+                        Inicio
+                      </p></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="store.html"><p class="h4 text-muted " style="font-style: italic">
+                        Tienda
+                      </p></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="weather.html"><p class="h4 text-muted " style="font-style: italic">
+                        Tiempo
+                      </p></a>
+                    </li>
+                  </ul>
+                </div>
+      
+                <!-- Left elements -->
+      
+                <!-- Center elements -->
+                <!-- Search form -->
+                <form class="input-group w-auto my-auto d-none d-sm-flex me-3" >
+                  <input
+                    autocomplete="off"
+                    type="search"
+                    class="form-control rounded"
+                    placeholder="Search"
+                    style="min-width: 125px"
+                  />
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                    <span class="input-group-text border-0 d-none d-lg-flex">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-search"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                </form>
+                <!-- Center elements -->
+      
+                <!-- Right elements -->
+
+                <div class="d-flex align-items-center">
+                  <ul class="navbar-nav ml-auto nav-flex-icons">
+                    <li class="nav-item">
+                      
+                      <a class="nav-link" href="#sidebar" data-bs-toggle="offcanvas" role="button" aria-controls="sidebar" id="btnCarrito" >
+                        <span class="badge badge-pill bg-danger" id="contadorArticulos" hidden="true"></span>
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                          </svg>
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                        </svg>
+                          <span id="usuarioInicio"></span>
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#"data-bs-toggle="modal" data-bs-target="#UpdateModal" id="btnEditar" >Editar perfil</a>
+                        <a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#DeleteModal">Eliminar cuenta</a>
+                        <a class="dropdown-item" id="cerrarSession" href="#">Cerrar sessión</a>
+                        <a class="dropdown-item" href="#">Salir</a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Right elements -->
+
+                <!-- modal borrar cuenta -->
+                        <!-- Modal -->
+                    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="DeleteCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Borrar cuenta</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                        <div class="modal-body">
+                                ¿Estas seguro de que quieres elimnar tu cuenta?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" id="btnBorrarCuenta" class="btn btn-danger" >Elimnar Cuenta</button>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                <!-- modal borrar cuenta -->
+
+                <!-- modal editar cuenta -->
+                        <!-- Modal -->
+                        <div class="modal fade" id="UpdateModal" tabindex="-1" role="dialog" aria-labelledby="UpdateCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Actualizar cuenta</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                            <div class="modal-body">
+                              <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="basic-addon1">@</span>
+                                    </div>
+                                      <input type="text" class="form-control" id="inputCambioUsername" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" id="btnActualizarCuenta" class="btn btn-warning" >Actualizar Cuenta</button>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                    <!-- modal editar cuenta -->               
+
+              </div>
+              <!-- div del USUARIO YA LOGUEADO -->
       </nav>
       <!-- Navbar -->
     </div>
@@ -307,42 +488,45 @@
    
 
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-lg-8 column-2">
           <!--  Map -->
-          <div id="map" style="width: 100%; height: 650px;" class="border border-primary rounded "></div>
+            <div id="spinner" class="spinner-wrapper overlap overlap-2">
+              <div class="spinner-border text-primary p-3 " role="status"></div>
+            </div>
+          <div id="weathermap" tyle="width: 100%; height: 650px;" class="border border-primary rounded "></div>
+        
           <!-- /tMap -->
       </div>
       <div class="col-lg-4">
         <!--  Weather -->
         <div class="container-fluid">
           <div class="row justify-content">
-            
-              <div class="card p-4">    
-                <div class="d-flex">
-                  <h6 class="flex-grow-1" id="nombreUbicacion">Nombre Ubicacion</h6>
+              <div class="card p-4 bg-custom">    
+                <div class="d-flex fs-3">
+                  <i class="bi bi-geo-fill"></i>
+                  <h4 class="flex-grow-1" id="nombreUbicacion"> Tu ubicacion </h4>
                 </div>
                 <div class="d-flex flex-column temp mt-5 mb-3">
-                  <h1 class="mb-0 font-weight-bold" id="heading"> 13&deg; C </h1>
-                  <span class="small grey" id="descripcion">Stormy</span>
+                  <h3 class="mb-0 font-weight-bold" id="temperature"></h3>
                 </div>
                 <div class="d-flex">
                            <div class="temp-details flex-grow-1">
-                                <p class="my-1">
-                                    <img src="https://i.imgur.com/B9kqOzp.png" height="17px" >
-            
-                                   <span id="wind"></span>
+                                <p class="my-1 fs-3">
+                                  <i class="bi bi-wind"></i>
+                                   <span id="wind">10 kmh</span>
                                 </p>
-                                <p class="my-1"> 
-                                    <img src="https://i.imgur.com/wGSJ8C5.png" height="17px" >
-                                    <span id="day_light">  </span>
+                                <p class="my-1 fs-3"> 
+                                    <i class="bi bi-sun-fill"></i>
+                                    <span id="day_light"> 12h </span>
                                 </p>
+                                <p class="my-1 fs-3"> 
+                                  <i class="bi bi-droplet-half"></i>
+                                  <span id="precipitation"> 8% </span>
+                              </p>
+                              <div id="weather_icon" class="weather_icon flex-grow-1">
+                                <img src="../assets/sun.png" class="weather_icon flex-grow-1"/>
+                              </div>
                            </div>
-                           
-                           <div>
-                               <div id="weather_icon" class="weather_icon"></div>
-                           </div>
-                           
-                           
                        </div>
               </div>
           </div>
@@ -350,7 +534,99 @@
         </div>
       </div>
     </div>
-    
+    <!-- Footer -->
+    <footer class="bg-image text-center text-lg-start text-gray mt-1">
+      <!-- Grid container -->
+      <div class="container p-4">
+        <!--Grid row-->
+        <div class="row my-4">
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+  
+            <div class="rounded-circle bg-white shadow-1-strong d-flex align-items-center justify-content-center mb-4 mx-auto circle" >
+              <img src="../assets/logo2.png" id="footer_logo" />
+            </div>
+            <p class="text-center ">A big wave is like a beautiful woman, exciting to look at and thrilling to ride</p>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-4">A way to fly</h5>
+  
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#!" class="text-gray link-underline link-underline-opacity-0"><i class="fas fa-paw pe-3"></i>Catch the Wave 🌊</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!" class="text-gray link-underline link-underline-opacity-0"><i class="fas fa-paw pe-3"></i>Saltwater Soul 🌊🌟</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!" class="text-gray link-underline link-underline-opacity-0"><i class="fas fa-paw pe-3"></i>Tides and Tribes 🌊🤙</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!" class="text-gray link-underline link-underline-opacity-0"><i class="fas fa-paw pe-3"></i>Sun, Sand, Surf ☀️🏄‍♂️</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!" class="text-gray link-underline link-underline-opacity-0"><i class="fas fa-paw pe-3"></i>Ride the Swell 🌊🏄‍♀️</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!" class="text-gray link-underline link-underline-opacity-0"><i class="fas fa-paw pe-3"></i>Dive Deeper 🌊🔍</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!" class="text-gray link-underline link-underline-opacity-0"><i class="fas fa-paw pe-3"></i>Surf's Up! 🤙🌊</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-4">About</h5>
+  
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#!" class="text-gray"><i class="fas fa-paw pe-3"></i>General information</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!" class="text-gray"><i class="fas fa-paw pe-3"></i>About</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!" class="text-whitgraye"><i class="fas fa-paw pe-3"></i>Policy</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!" class="text-gray"><i class="fas fa-paw pe-3"></i>Job</a>
+              </li>
+              <li class="mb-2">
+                <a href="#!" class="text-gray"><i class="fas fa-paw pe-3"></i>Contact</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-4">Contact</h5>
+  
+            <ul class="list-unstyled">
+              <li>
+                <p><i class="fas fa-map-marker-alt pe-2"></i>Caracas, no. 57, Spain, Palma</p>
+              </li>
+              <li>
+                <p><i class="fas fa-phone pe-2"></i>+34 67894235</p>
+              </li>
+              <li>
+                <p><i class="fas fa-envelope pe-2 mb-0"></i>contact@surfweb.com</p>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </div>
+      <!-- Grid container -->
+    </footer>
+    <!-- /Footer -->
 
     <!--script  Map -->
     <script src="../main.js"></script>

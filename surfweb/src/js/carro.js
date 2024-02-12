@@ -121,7 +121,9 @@ function carrito() {
 // La funcion se ejecuta cuando se pulse el boton del carro asi que , me traigo el boton y le añado un listener
 
 const btnCarro = document.querySelector("#btnCarrito");
-btnCarro.addEventListener("click", carrito);
+if (btnCarro) {
+  btnCarro.addEventListener("click", carrito);
+}
 
 //Funcion para añadir articulos
 function anadirArticulo(evento) {

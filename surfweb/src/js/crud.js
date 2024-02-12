@@ -5,14 +5,20 @@ const btnCerrarsession = document.querySelector("#cerrarSession");
 
 //Boton de loguarse
 const login = document.querySelector("#buttonSignin");
-login.addEventListener("click", checkLoguin);
+if (login) {
+  login.addEventListener("click", checkLoguin);
+}
 
 //Boton de registarse
 const registerCreate = document.querySelector("#buttonSignup");
-registerCreate.addEventListener("click", insertarUser);
+if (registerCreate) {
+  registerCreate.addEventListener("click", insertarUser);
+}
 
 //Cerrar sesion
-btnCerrarsession.addEventListener("click", cierreSesion);
+if (btnCerrarsession) {
+  btnCerrarsession.addEventListener("click", cierreSesion);
+}
 
 //Funcion pantalla de carga
 const spinnerwrapper = document.querySelector(".spinner-wrapper");
@@ -27,7 +33,6 @@ window.addEventListener("load", () => {
 
 setTimeout(() => {
   const sesion = localStorage.getItem("User");
-  console.log(sesion);
   if (sesion) {
     usuarioInicio.innerHTML = sesion;
     divLogued.removeAttribute("hidden");
@@ -121,7 +126,10 @@ function cierreSesion() {
 //Eliminar usuario
 
 const btnBorrarPerfil = document.querySelector("#btnBorrarCuenta");
-btnBorrarPerfil.addEventListener("click", borrarCuenta);
+
+if (btnBorrarPerfil) {
+  btnBorrarPerfil.addEventListener("click", borrarCuenta);
+}
 
 function borrarCuenta() {
   const logued = localStorage.getItem("User");
@@ -186,7 +194,9 @@ function actualizarCuenta() {
 
 //Editar boton usuario
 const btnActualizarUser = document.querySelector("#btnActualizarCuenta");
-btnActualizarUser.addEventListener("click", actualizarCuenta);
+if (btnActualizarUser) {
+  btnActualizarUser.addEventListener("click", actualizarCuenta);
+}
 
 //Ponser el valor en el input del usuario que esta logueado
 function obtenerInputEdit() {
@@ -199,4 +209,6 @@ function obtenerInputEdit() {
 
 //Obtención del input
 const btnEdit = document.querySelector("#btnEditar");
-btnEdit.addEventListener("click", obtenerInputEdit);
+if (btnEdit) {
+  btnEdit.addEventListener("click", obtenerInputEdit);
+}
